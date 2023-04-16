@@ -1,13 +1,37 @@
-import { View } from "react-native";
-import { Link, Stack } from "expo-router";
+import { View, ScrollView, SafeAreaView } from "react-native";
+import { Link, Stack, useRouter } from "expo-router";
+import { useState } from "react";
+
+import { COLORS, icons, images, SIZE } from "../components"
+import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from "../components"
 
 export default function Home() {
+  const router = useRouter();
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      {/* Use the `Screen` component to configure the layout. */}
-      <Stack.Screen options={{ title: "Overview" }} />
-      {/* Use the `Link` component to enable optimized client-side routing. */}
-      <Link href="/details">Go to Details</Link>
-    </View>
+    <SafeAreaView style={{ flex: 1, justifyContent: "center", alignItems: "center",backgroundColor: "#FAFAFC"  }}>
+
+      <Stack.Screen options={{ 
+        headerStyle: { backgroundColor: "#FAFAFC" },
+        headerShadowVisible: false,
+        headerLeft: () => (
+          <ScreenHeaderBtn dimension="60%" />
+        ),
+        headerRight: () => (
+          <ScreenHeaderBtn dimension="100%" />
+        ),
+        headerTitle:"hi "
+       }} />
+       <ScrollView>
+        <View
+        style={{flex: 1, padding: 10,
+        }}>
+          <Welcome />
+          <Popularjobs />
+          <Nearbyjobs />
+
+        </View>
+       </ScrollView>
+
+    </SafeAreaView>
   );
 }
