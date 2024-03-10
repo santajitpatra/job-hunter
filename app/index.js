@@ -2,7 +2,7 @@ import { View, ScrollView, SafeAreaView } from "react-native";
 import { Link, Stack, useRouter } from "expo-router";
 import { useState } from "react";
 
-import { COLORS, icons, images, SIZE } from "../constants"
+import { COLORS, icons, images, SIZE, SIZES } from "../constants"
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from "../components"
 
 export default function Home() {
@@ -11,14 +11,12 @@ export default function Home() {
     <SafeAreaView
       style={{
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#FAFAFC",
+        backgroundColor: COLORS.lightWhite
       }}
     >
       <Stack.Screen
         options={{
-          headerStyle: { backgroundColor: "#FAFAFC" },
+          headerStyle: { backgroundColor: COLORS.lightWhite },
           headerShadowVisible: false,
           headerLeft: () => (
             <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />
@@ -30,7 +28,7 @@ export default function Home() {
         }}
       />
       <ScrollView>
-        <View style={{ flex: 1, padding: 10 }}>
+        <View style={{ flex: 1, padding: SIZES.medium }}>
           <Welcome />
           <Popularjobs />
           <Nearbyjobs />
